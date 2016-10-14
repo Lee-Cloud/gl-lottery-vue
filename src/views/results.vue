@@ -38,6 +38,10 @@
 </script>
 <style scoped>
   div.space{
+    position: fixed;
+    top: 0.9rem;
+    left: 0;
+    z-index: 100;
     width: 100%;
     height: 0.12rem;
     background-color: #eee;
@@ -46,6 +50,7 @@
   ul.results-list{
     width: 100%;
     padding-left: 0.21rem;
+    margin-top: 0.12rem;
   }
   li.results-item{
     position: relative;

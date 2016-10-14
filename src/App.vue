@@ -38,12 +38,11 @@ export default {
     height: 100%;
   }
   body {
+    position: relative;
     width: 7.2rem;
-    height: 100%;
-    margin: 0 auto;
+    /*height: 100%;*/
     font-size: 0.3rem;
     font-family: 微软雅黑;
-    /*padding-top: 0.9rem;*/
   }
   ul,
   ol,
@@ -53,16 +52,26 @@ export default {
   a{
     text-decoration: none;
   }
-  .view {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 7.2rem;
-  }
-  header{
+  #app {
     /*position: fixed;
     top: 0;
     left: 0;*/
+    width: 100%;
+    height: 100%;
+  }
+  .view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 7.2rem;
+    /*height: 100%;*/
+    padding-top: 0.9rem;
+  }
+  header{
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 0.9rem;
     background-color: #dc3d40;

@@ -13,7 +13,7 @@
         <img src="../assets/ico_zixun.png" alt="购彩资讯" />
         <p>购彩资讯</p>
       </router-link>
-      <router-link to="" class="nav-item">
+      <router-link to="/stations/station_detail" class="nav-item">
         <img src="../assets/ico_zhandian.png" alt="附近站点" />
         <p>附近站点</p>
       </router-link>

@@ -12,6 +12,8 @@ import results from './views/results';
 import result_history from './views/result-history';
 import information from './views/information';
 import information_detail from './views/information-detail';
+// import stations from './views/stations';
+import station_detail from './views/station-detail';
 
 Vue.use(VueRouter);
 const router = new VueRouter({
@@ -31,6 +33,9 @@ const router = new VueRouter({
     },{
       path:'/information/information_detail',
       component:information_detail
+    },{
+      path:'/stations/station_detail',
+      component: station_detail
     }
 	]
 })
