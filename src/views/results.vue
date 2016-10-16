@@ -1,9 +1,9 @@
 <template>
   <div id="results">
-    <header>
+    <!-- <header>
       <router-link to="/" class="icon-back"></router-link>
       开奖结果
-    </header>
+    </header> -->
     <div class="space"></div>
     <ul class="results-list">
       <li class="results-item" v-for="result in results">

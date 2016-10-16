@@ -1,9 +1,9 @@
 <template>
   <div id="information-detail">
-    <header>
+    <!-- <header>
       <i class="icon-back" v-on:click="backwards"></i>
       资讯详情
-    </header>
+    </header> -->
     <div class="content">
       <div class="information-title">
         <h1>独家评论：莱斯特花一亿英镑买张琳芃也不亏</h1>

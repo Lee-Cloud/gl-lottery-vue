@@ -7,6 +7,7 @@ window.onresize = responsive;
 import Vue from 'vue';
 import App from './App';
 import VueRouter from 'vue-router';
+import Vuex from 'vuex';
 import Home from './views/Home';
 import results from './views/results';
 import result_history from './views/result-history';
@@ -17,6 +18,7 @@ import station_detail from './views/station-detail';
 
 Vue.use(VueRouter);
 const router = new VueRouter({
+  mode: 'history',
 	routes:[
 		{
 			path:"",
@@ -39,8 +41,15 @@ const router = new VueRouter({
     }
 	]
 })
+// Vue.use(Vuex);
+// const store = new Vuex.Store({
+//   state: {
+//     title: "title"
+//   }
+// });
 const app = new Vue({
   el: '#app',
-  router:router,
+  router,
+  // store,
   render: h => h(App)
 })

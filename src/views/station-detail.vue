@@ -1,9 +1,9 @@
 <template>
   <div id="stations-detail">
-    <header>
+    <!-- <header>
       <i class="icon-back" v-on:click="backwards"></i>
       投注站
-    </header>
+    </header> -->
     <ul class="tabs">
       <li v-on:click="tab_intro" v-bind:class="{active:isIntro}">站点介绍</li>
       <li v-on:click="tab_pic" v-bind:class="{active:!isIntro}">站点照片</li>

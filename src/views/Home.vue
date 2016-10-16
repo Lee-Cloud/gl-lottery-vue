@@ -1,6 +1,6 @@
 <template>
   <div id = "home">
-    <header>咕啦彩票</header>
+    <!-- <header>咕啦彩票</header> -->
     <div class="banner">
 
     </div>

@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <header>
+      <i class="icon-back" v-on:click="backwards"></i>
+      咕啦彩票
+    </header>
     <transition :name="transitionName">
       <router-view class="view"></router-view>
     </transition>
@@ -10,7 +14,13 @@
 export default {
   data(){
     return {
+      // title:store.state.title,
       transitionName:""
+    }
+  },
+  methods:{
+    backwards: function(){
+      history.go(-1);
     }
   },
   watch: {
@@ -34,15 +44,19 @@ export default {
     box-sizing: border-box;
   }
   html {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
   }
   body {
     position: relative;
     width: 7.2rem;
-    /*height: 100%;*/
+    height: 100%;
     font-size: 0.3rem;
     font-family: 微软雅黑;
+    background-color: white;
   }
   ul,
   ol,
@@ -53,19 +67,18 @@ export default {
     text-decoration: none;
   }
   #app {
-    /*position: fixed;
-    top: 0;
-    left: 0;*/
     width: 100%;
     height: 100%;
+    padding-top: 0.9rem;
   }
   .view {
     position: absolute;
     top: 0;
     left: 0;
     width: 7.2rem;
-    /*height: 100%;*/
+    height: 100%;
     padding-top: 0.9rem;
+    overflow-y: scroll;
   }
   header{
     position: fixed;
@@ -97,12 +110,12 @@ export default {
     animation: slide-left-out 0.3s ease-in-out;
   }
   @keyframes slide-left-in {
-    0% {transform: translate(100%,0)}
-    100% {transform: translate(0,0)}
+    0% {transform: translate3d(100%,0,0)}
+    100% {transform: translate3d(0,0,0)}
   }
   @keyframes slide-left-out {
-    0% {transform: translate(0,0)}
-    100% {transform: translate(-100%,0)}
+    0% {transform: translate3d(0,0,0)}
+    100% {transform: translate3d(-100%,0,0)}
   }
   .slide-right-enter-active {
     animation:slide-right-in 0.3s ease-in-out;

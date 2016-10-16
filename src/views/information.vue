@@ -1,9 +1,9 @@
 <template>
   <div id="information">
-    <header>
+    <!-- <header>
       <i class="icon-back" v-on:click="backwards"></i>
       购彩资讯
-    </header>
+    </header> -->
     <ul class="info-list">
       <li class="information">
         <router-link to="information/information_detail" class="link">

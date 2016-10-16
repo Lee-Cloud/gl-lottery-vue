@@ -1,9 +1,9 @@
 <template>
   <div id="result-history">
-    <header>
+    <!-- <header>
       <i class="icon-back" v-on:click="backwards"></i>
       大乐透开奖列表
-    </header>
+    </header> -->
     <div class="space"></div>
     <ul class="result-list">
       <li v-for="result in results">
