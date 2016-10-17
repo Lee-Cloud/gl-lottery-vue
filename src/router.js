@@ -7,6 +7,8 @@ import information from './views/information';
 import information_detail from './views/information-detail';
 import stations from './views/stations';
 import station_detail from './views/station-detail';
+import recommends from './views/recommends';
+import recommend_details from './views/recommend_details'
 
 Vue.use(VueRouter);
 export default new VueRouter({
@@ -33,6 +35,12 @@ export default new VueRouter({
     },{
       path:'/stations/station_detail',
       component: station_detail
+    },{
+      path:'/recommends',
+      component:recommends
+    },{
+      path:'/recommends/details',
+      component:recommend_details
     }
 	]
 })

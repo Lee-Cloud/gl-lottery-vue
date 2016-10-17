@@ -72,7 +72,7 @@ export default {
     text-decoration: none;
   }
   #app {
-    width: 100%;
+    width: 7.2rem;
     height: 100%;
     padding-top: 0.9rem;
   }

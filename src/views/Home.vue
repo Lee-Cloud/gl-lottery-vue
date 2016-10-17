@@ -16,7 +16,7 @@
         <img src="../assets/ico_zhandian.png" alt="附近站点" />
         <p>附近站点</p>
       </router-link>
-      <router-link to="" class="nav-item">
+      <router-link to="/recommends" class="nav-item">
         <img src="../assets/ico_tuijian.png" alt="专家推荐" />
         <p>专家推荐</p>
       </router-link>
