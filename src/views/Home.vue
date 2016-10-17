@@ -1,7 +1,6 @@
 <template>
-  <div id = "home">
-    <!-- <header>咕啦彩票</header> -->
-    <div class="banner">
+  <div id = "home"  v-on:load="viewIn">
+    <div class="banner" v-on:click="viewIn">
 
     </div>
     <nav>
@@ -13,7 +12,7 @@
         <img src="../assets/ico_zixun.png" alt="购彩资讯" />
         <p>购彩资讯</p>
       </router-link>
-      <router-link to="/stations/station_detail" class="nav-item">
+      <router-link to="/stations" class="nav-item">
         <img src="../assets/ico_zhandian.png" alt="附近站点" />
         <p>附近站点</p>
       </router-link>
@@ -120,7 +119,17 @@
 </template>
 <script>
   export default {
+    date(){
+      return {
+        title: "咕啦彩票"
+      }
+    },
+    methods: {
+      viewIn: function(){
 
+        this.$emit('viewIn',"咕啦彩票")
+      }
+    },
   }
 </script>
 <style scoped>

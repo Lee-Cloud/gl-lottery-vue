@@ -41,7 +41,7 @@
     width: 100%;
     height: 0.12rem;
     background-color: #eee;
-    border-bottom: 1px solid #ccc;
+    /*border-bottom: 1px solid #ccc;*/
   }
   ul.result-list{
     width: 100%;

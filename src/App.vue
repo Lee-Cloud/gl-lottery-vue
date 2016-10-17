@@ -2,29 +2,34 @@
   <div id="app">
     <header>
       <i class="icon-back" v-on:click="backwards"></i>
-      咕啦彩票
+      {{title}}
     </header>
     <transition :name="transitionName">
-      <router-view class="view"></router-view>
+      <router-view class="view" v-on:viewIn="changeTitle"></router-view>
     </transition>
   </div>
 </template>
 
 <script>
+import store from './vuex/store.js';
 export default {
+  store,
   data(){
     return {
-      // title:store.state.title,
+      title:"咕啦彩票",
       transitionName:""
     }
   },
   methods:{
     backwards: function(){
       history.go(-1);
+    },
+    changeTitle: function(value){
+      this.title = value;
     }
   },
   watch: {
-  '$route' (to, from) {
+    '$route' (to, from) {
     const toDepth = to.path.split('/').length;
     const fromDepth = from.path.split('/').length;
     if(to.path=="/"){
@@ -33,7 +38,7 @@ export default {
       this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
     }
   }
-}
+  },
 }
 </script>
 

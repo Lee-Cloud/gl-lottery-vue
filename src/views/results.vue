@@ -1,9 +1,5 @@
 <template>
   <div id="results">
-    <!-- <header>
-      <router-link to="/" class="icon-back"></router-link>
-      开奖结果
-    </header> -->
     <div class="space"></div>
     <ul class="results-list">
       <li class="results-item" v-for="result in results">
@@ -33,6 +29,12 @@
           {type:"qxc",numbers:["01","02","03",10,15,18,24,32],title:"七星彩",date:"第453434期 2016-10-12（周三）"},
         ]
       }
+    },
+    events: {
+      viewIn: function(){
+
+        this.$emit('viewIn',"咕啦彩票")
+      }
     }
   }
 </script>
@@ -45,7 +47,7 @@
     width: 100%;
     height: 0.12rem;
     background-color: #eee;
-    border-bottom: 1px solid #ccc;
+    /*border-bottom: 1px solid #ccc;*/
   }
   ul.results-list{
     width: 100%;
