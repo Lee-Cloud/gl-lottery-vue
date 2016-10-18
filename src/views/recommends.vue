@@ -33,6 +33,9 @@ export default {
   data () {
     return {}
   },
+  created (){
+    this.$emit('viewIn',"专家推荐");
+  },
   computed: {},
   mounted () {},
   methods: {},

@@ -20,6 +20,9 @@
 </template>
 <script type="text/javascript">
   export default {
+    created (){
+      this.$emit('viewIn',"资讯详情");
+    },
     methods: {
       backwards: function(){
         history.go(-1)

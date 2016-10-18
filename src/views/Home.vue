@@ -1,6 +1,6 @@
 <template>
-  <div id = "home"  v-on:load="viewIn">
-    <div class="banner" v-on:click="viewIn">
+  <div id = "home">
+    <div class="banner">
 
     </div>
     <nav>
@@ -33,7 +33,7 @@
         </router-link>
       </li>
       <li class="lottery">
-        <router-link to="" class="lottery-link">
+        <router-link to="/shuangseqiu" class="lottery-link">
           <img src="../assets/ico_shuangseqiu.png" alt="双色球" />
           <div class="lottery-info">
             <p class="lottery-name">双色球</p>
@@ -42,7 +42,7 @@
         </router-link>
       </li>
       <li class="lottery">
-        <router-link to="" class="lottery-link">
+        <router-link to="/daletou" class="lottery-link">
           <img src="../assets/ico_daletou.png" alt="大乐透" />
           <div class="lottery-info">
             <p class="lottery-name">大乐透</p>
@@ -124,11 +124,11 @@
         title: "咕啦彩票"
       }
     },
+    created (){
+      this.$emit('viewIn',"咕啦彩票");
+    },
     methods: {
-      viewIn: function(){
 
-        this.$emit('viewIn',"咕啦彩票")
-      }
     },
   }
 </script>

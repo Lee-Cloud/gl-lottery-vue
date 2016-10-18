@@ -71,6 +71,9 @@ export default {
   a{
     text-decoration: none;
   }
+  input {
+    -webkit-appearance : none;
+  }
   #app {
     width: 7.2rem;
     height: 100%;
@@ -84,6 +87,7 @@ export default {
     height: 100%;
     padding-top: 0.9rem;
     overflow-y: scroll;
+    overflow-x: hidden;
   }
   header{
     position: fixed;

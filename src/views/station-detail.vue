@@ -47,10 +47,10 @@
         isIntro : true
       }
     },
+    created (){
+      this.$emit('viewIn',"投注站详情");
+    },
     methods:{
-      backwards: function(){
-        history.go(-1);
-      },
       tab_intro: function(){
         this.isIntro = true;
       },

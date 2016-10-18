@@ -28,7 +28,10 @@
           {type:"福彩店",name:"天天向上福票站",location:"河北省石家庄市",class:"fucai"}
         ]
       }
-    }
+    },
+    created (){
+      this.$emit('viewIn',"投注站");
+    },
   }
 </script>
 <style scoped>

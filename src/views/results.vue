@@ -30,12 +30,9 @@
         ]
       }
     },
-    events: {
-      viewIn: function(){
-
-        this.$emit('viewIn',"咕啦彩票")
-      }
-    }
+    created (){
+      this.$emit('viewIn',"开奖结果");
+    },
   }
 </script>
 <style scoped>

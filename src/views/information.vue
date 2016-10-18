@@ -20,10 +20,8 @@
 </template>
 <script type="text/javascript">
   export default {
-    methods:{
-      backwards:function(){
-        history.go(-1);
-      }
+    created (){
+      this.$emit('viewIn',"购彩资讯");
     }
   }
 </script>

@@ -8,7 +8,11 @@ import information_detail from './views/information-detail';
 import stations from './views/stations';
 import station_detail from './views/station-detail';
 import recommends from './views/recommends';
-import recommend_details from './views/recommend_details'
+import recommend_details from './views/recommend_details';
+
+import shuangseqiu from './views/shuangseqiu';
+
+import daletou from './views/daletou';
 
 Vue.use(VueRouter);
 export default new VueRouter({
@@ -41,6 +45,12 @@ export default new VueRouter({
     },{
       path:'/recommends/details',
       component:recommend_details
+    },{
+      path: '/shuangseqiu',
+      component:shuangseqiu
+    },{
+      path: '/daletou',
+      component:daletou
     }
 	]
 })

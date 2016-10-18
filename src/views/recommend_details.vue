@@ -18,6 +18,9 @@ export default {
   data () {
     return {}
   },
+  created (){
+    this.$emit('viewIn',"推荐详情");
+  },
   computed: {},
   mounted () {},
   methods: {},

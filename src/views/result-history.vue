@@ -26,11 +26,9 @@
         ]
       }
     },
-    methods: {
-      backwards: function(){
-        history.go(-1)
-      }
-    }
+    created (){
+      this.$emit('viewIn',"开奖列表");
+    },
   }
 </script>
 <style scoped>
