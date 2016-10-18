@@ -105,7 +105,7 @@ export default {
     width: 0.18rem;
     height: 0.38rem;
     margin: 0.26rem 0.23rem;
-    background-image: url("assets/ico_back.png");
+    background-image: url("./assets/ico_back.png");
     background-size: 100% 100%;
   }
   .slide-left-enter-active {
