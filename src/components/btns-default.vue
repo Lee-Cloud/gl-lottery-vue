@@ -1,6 +1,6 @@
 <template lang="html">
   <div id="btns-default">
-    <span class="clear-btn">清空</span>
+    <span class="clear-btn" v-on:click="clear">清空</span>
     <p class="count"><span>0</span> 注 <span>0</span> 元</p>
     <input class="sure-btn" type="button" value="确定" disabled="">
   </div>
@@ -13,7 +13,11 @@ export default {
   },
   computed: {},
   mounted () {},
-  methods: {},
+  methods: {
+    clear:function(){
+      this.$emit('clear');
+    }
+  },
   components: {}
 }
 </script>

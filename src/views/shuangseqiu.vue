@@ -4,13 +4,13 @@
     <div class="ball-zone">
       <p class="prompt">至少选择5个红球，2个蓝球<span class="random-btn">机选</span></p>
       <ul class="balls red-balls">
-        <li v-for="num in 33">{{num}}</li>
+        <li v-for="(red,index) in reds" v-on:click="red_select(index)" v-bind:class="{selected:red.isSelected}">{{red.num}}</li>
       </ul>
       <ul class="balls">
-        <li v-for="num in 16" class="blue-ball">{{num}}</li>
+        <li v-for="num in 16" class="blue-ball" v-on:click="blue_select">{{num}}</li>
       </ul>
     </div>
-    <btns></btns>
+    <btns v-on:clear="clear"></btns>
   </div>
 </template>
 
@@ -19,14 +19,45 @@ import deadlines from '../components/deadlines-results.vue';
 import btns from '../components/btns-default';
 export default {
   data () {
-    return {}
+    return {
+      reds:[],
+      blues:[],
+      reds_selected:[],
+      blues_selected:[]
+    }
   },
   created (){
     this.$emit('viewIn',"双色球");
+    var reds = [];
+    for(var i=0;i<34;i++){
+      reds[i] = {num:i+1,isSelected:false};
+    }
+    this.$set(this,'reds',reds)
   },
   computed: {},
   mounted () {},
-  methods: {},
+  methods: {
+    red_select:function(index){
+      var red = this.reds[index].num;
+      var push = true;
+      for(var i = 0;i<this.reds_selected.length;i++){
+        if(this.reds_selected[i]==red){
+          this.reds_selected.splice(i,1);
+          push = false;
+        }
+      }
+      ((this.reds_selected.length<5)&&push)&&(this.reds_selected.push(red)&&(this.reds[index].isSelected = true))
+      //
+      // console.log(this.reds)
+    },
+    blue_select:function(){
+      console.log("blue_select");
+    },
+    clear:function(){
+      this.reds.length = 0;
+      this.blues.length = 0;
+    }
+  },
   components: {
     deadlines,
     btns

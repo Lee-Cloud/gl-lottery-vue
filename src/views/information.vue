@@ -1,17 +1,13 @@
 <template>
   <div id="information">
-    <!-- <header>
-      <i class="icon-back" v-on:click="backwards"></i>
-      购彩资讯
-    </header> -->
     <ul class="info-list">
-      <li class="information">
+      <li class="information" v-for="news in newslist">
         <router-link to="information/information_detail" class="link">
-          <img src="" alt="" />
+          <img v-bind:src="news.picUrl" alt="" />
           <ul class="info-preview">
-            <li class="info-preview-titile">啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</li>
-            <li class="info-preview-content">啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</li>
-            <li class="info-preview-date">11-21 12：30</li>
+            <li class="info-preview-titile">{{news.title}}</li>
+            <li class="info-preview-content">{{news.description}}</li>
+            <li class="info-preview-date">{{news.ctime}}</li>
           </ul>
         </router-link>
       </li>
@@ -19,9 +15,35 @@
   </div>
 </template>
 <script type="text/javascript">
+import Vue from 'vue';
+import VueResource from 'vue-resource';
+Vue.use(VueResource);
   export default {
+    data(){
+      return {
+        newslist:[]
+      }
+    },
     created (){
       this.$emit('viewIn',"购彩资讯");
+      this.$http.get('http://apis.baidu.com/txapi/tiyu/tiyu',{
+        params:{
+          num:10,
+        },
+        headers:{
+          apikey:'cf9eaf021a2acdaea3a658c3bc9088ff'
+        }
+      })
+      .then(
+        function(response){
+          console.log(response.body.newslist);
+          this.$set(this,'newslist', response.body.newslist);
+          // console.log(this.newslist);
+        },
+        function(response){
+          console.log(response)
+        }
+      )
     }
   }
 </script>
@@ -70,13 +92,13 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
-    line-height: 100%;
+    /*line-height: 100%;*/
     text-align: justify;
   }
   li.info-preview-date{
     color: #888;
     font-size: 0.18rem;
     text-align: right;
-    line-height: 100%;
+    /*line-height: 100%;*/
   }
 </style>

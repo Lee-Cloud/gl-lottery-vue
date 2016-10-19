@@ -17,6 +17,9 @@
   </div>
 </template>
 <script type="text/javascript">
+import Vue from 'vue';
+import VueResource from 'vue-resource';
+Vue.use(VueResource);
   export default {
     data(){
       return {
@@ -30,7 +33,7 @@
         ]
       }
     },
-    created (){
+    created:function (){
       this.$emit('viewIn',"开奖结果");
     },
   }
