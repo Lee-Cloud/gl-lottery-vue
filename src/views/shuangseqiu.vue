@@ -2,15 +2,15 @@
   <div id="shuangseqiu">
     <deadlines></deadlines>
     <div class="ball-zone">
-      <p class="prompt">至少选择5个红球，2个蓝球<span class="random-btn">机选</span></p>
+      <p class="prompt">至少选择5个红球，2个蓝球<span class="random-btn" v-on:click="random">机选</span></p>
       <ul class="balls red-balls">
-        <li v-for="(red,index) in reds" v-on:click="red_select(index)" v-bind:class="{selected:red.isSelected}">{{red.num}}</li>
+        <li v-for="(item,index) in reds" v-on:click="red_select(item,index)" v-bind:class="{selected:item.isSelected}">{{item.num}}</li>
       </ul>
       <ul class="balls">
-        <li v-for="num in 16" class="blue-ball" v-on:click="blue_select">{{num}}</li>
+        <li v-for="(item,index) in blues" class="blue-ball" v-on:click="blue_select(item)" v-bind:class="{selected:item.isSelected}">{{item.num}}</li>
       </ul>
     </div>
-    <btns v-on:clear="clear"></btns>
+    <btns v-on:clear="init" v-on:submit="submit"></btns>
   </div>
 </template>
 
@@ -28,34 +28,64 @@ export default {
   },
   created (){
     this.$emit('viewIn',"双色球");
-    var reds = [];
-    for(var i=0;i<34;i++){
-      reds[i] = {num:i+1,isSelected:false};
-    }
-    this.$set(this,'reds',reds)
+    this.init();
   },
   computed: {},
   mounted () {},
   methods: {
-    red_select:function(index){
-      var red = this.reds[index].num;
-      var push = true;
-      for(var i = 0;i<this.reds_selected.length;i++){
-        if(this.reds_selected[i]==red){
-          this.reds_selected.splice(i,1);
-          push = false;
+    init:function(){
+      var reds = [];
+      var blues = [];
+      for(var i=1;i<35;i++){
+        (i<10)&&(i='0'+i);
+        reds.push({num:i,isSelected:false});
+      }
+      for(var j=1;j<17;j++){
+        (j<10)&&(j='0'+j);
+        blues.push({num:j,isSelected:false});
+      }
+      this.$set(this,'reds',reds);
+      this.$set(this,'blues',blues);
+      this.reds_selected.length = 0;
+      this.blues_selected.length = 0;
+    },
+    red_select:function(item,index){
+      item.isSelected = !item.isSelected;
+      if(item.isSelected){
+        (this.reds_selected.length<5)?this.reds_selected.push(item.num):(item.isSelected = !item.isSelected);
+      }else{
+        for(var i=0;i<this.reds_selected.length;i++){
+          (this.reds_selected[i]==item.num)&&(this.reds_selected.splice(i,1));
         }
       }
-      ((this.reds_selected.length<5)&&push)&&(this.reds_selected.push(red)&&(this.reds[index].isSelected = true))
-      //
-      // console.log(this.reds)
+      // console.log(this.reds_selected);
     },
-    blue_select:function(){
-      console.log("blue_select");
+    blue_select:function(item){
+      item.isSelected = !item.isSelected;
+      if(item.isSelected){
+        (this.blues_selected.length<2)?this.blues_selected.push(item.num):(item.isSelected = !item.isSelected);
+      }else{
+        for(var i=0;i<this.blues_selected.length;i++){
+          (this.blues_selected[i]==item.num)&&(this.blues_selected.splice(i,1));
+        }
+      }
+      // console.log(this.blues_selected);
     },
-    clear:function(){
-      this.reds.length = 0;
-      this.blues.length = 0;
+    random:function(){
+      this.init();
+      while(this.reds_selected.length<5){
+        var i = parseInt(Math.random()*34);
+        this.red_select(this.reds[i]);
+      }
+      while(this.blues_selected.length<2){
+        var j = parseInt(Math.random()*16);
+        this.blue_select(this.blues[j]);
+      }
+    },
+    submit:function(){
+      this.reds_selected.sort(function(a,b){return a-b});
+      this.blues_selected.sort(function(a,b){return a-b});
+      console.log(this.reds_selected.concat(this.blues_selected));
     }
   },
   components: {

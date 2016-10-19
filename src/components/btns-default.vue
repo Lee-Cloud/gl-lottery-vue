@@ -2,7 +2,7 @@
   <div id="btns-default">
     <span class="clear-btn" v-on:click="clear">清空</span>
     <p class="count"><span>0</span> 注 <span>0</span> 元</p>
-    <input class="sure-btn" type="button" value="确定" disabled="">
+    <input class="sure-btn" type="button" value="确定"  v-on:click="submit">
   </div>
 </template>
 
@@ -16,6 +16,9 @@ export default {
   methods: {
     clear:function(){
       this.$emit('clear');
+    },
+    submit:function(){
+      this.$emit('submit');
     }
   },
   components: {}
