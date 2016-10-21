@@ -1,16 +1,19 @@
 <template lang="html">
   <div id="btns-default">
     <span class="clear-btn" v-on:click="clear">清空</span>
-    <p class="count"><span>0</span> 注 <span>0</span> 元</p>
-    <input class="sure-btn" type="button" value="确定"  v-on:click="submit">
+    <p class="count"><span>{{zhu}}</span> 注 <span>{{zhu*2}}</span> 元</p>
+    <input class="sure-btn" type="button" value="确定"  v-on:click="submit" v-bind:disabled="!canSubmit">
   </div>
 </template>
 
 <script>
 export default {
   data () {
-    return {}
+    return {
+      
+    }
   },
+  props:['canSubmit','zhu'],
   computed: {},
   mounted () {},
   methods: {

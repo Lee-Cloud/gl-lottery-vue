@@ -10,11 +10,12 @@
         <li v-for="(item,index) in blues" class="blue-ball" v-on:click="blue_select(item)" v-bind:class="{selected:item.isSelected}">{{item.num}}</li>
       </ul>
     </div>
-    <btns v-on:clear="init" v-on:submit="submit"></btns>
+    <btns v-on:clear="init" v-on:submit="submit" v-bind:canSubmit="canSubmit" v-bind:zhu="zhu"></btns>
   </div>
 </template>
 
 <script>
+import router from '../router.js';
 import deadlines from '../components/deadlines-results.vue';
 import btns from '../components/btns-default';
 export default {
@@ -23,14 +24,30 @@ export default {
       reds:[],
       blues:[],
       reds_selected:[],
-      blues_selected:[]
+      blues_selected:[],
+      ssq:[],
+      zhu:0,
+      canSubmit:false
     }
   },
   created (){
     this.$emit('viewIn',"双色球");
-    this.init();
+    this.init();//34个红球，16个蓝球初始化
   },
-  computed: {},
+  computed: {
+    check:function(){
+      if((this.reds_selected.length==5)&&(this.blues_selected.length==2)){
+        this.reds_selected.sort(function(a,b){return a-b});
+        this.blues_selected.sort(function(a,b){return a-b});
+        this.$set(this,'ssq',this.reds_selected.concat(this.blues_selected));
+        this.$set(this,'canSubmit',true);
+        this.zhu = 1;
+      }else{
+        this.canSubmit = false;
+        this.zhu = 0;
+      }
+    }
+  },
   mounted () {},
   methods: {
     init:function(){
@@ -48,6 +65,8 @@ export default {
       this.$set(this,'blues',blues);
       this.reds_selected.length = 0;
       this.blues_selected.length = 0;
+      this.canSubmit = false;
+      this.zhu = 0;
     },
     red_select:function(item,index){
       item.isSelected = !item.isSelected;
@@ -58,6 +77,7 @@ export default {
           (this.reds_selected[i]==item.num)&&(this.reds_selected.splice(i,1));
         }
       }
+      this.check;
       // console.log(this.reds_selected);
     },
     blue_select:function(item){
@@ -69,6 +89,7 @@ export default {
           (this.blues_selected[i]==item.num)&&(this.blues_selected.splice(i,1));
         }
       }
+      this.check;
       // console.log(this.blues_selected);
     },
     random:function(){
@@ -83,9 +104,8 @@ export default {
       }
     },
     submit:function(){
-      this.reds_selected.sort(function(a,b){return a-b});
-      this.blues_selected.sort(function(a,b){return a-b});
-      console.log(this.reds_selected.concat(this.blues_selected));
+      console.log(this.ssq);
+      router.push('shuangseqiu/slip');
     }
   },
   components: {
@@ -155,6 +175,8 @@ export default {
       >li.blue-ball.selected {
         color:white;
         background-color:#0c89e1;
+        animation:scale .3s ease-in-out;
+        -webkit-animation:scale .3s ease-in-out;
       }
     }
     >ul.red-balls {
@@ -176,7 +198,19 @@ export default {
       >li.selected {
         color:white;
         background-color:#e73334;
+        animation:scale .3s ease-in-out;
+        -webkit-animation:scale .3s ease-in-out;
       }
+    }
+    @keyframes scale {
+      0%{transform:scale(1)}
+      50%{transform:scale(1.2)}
+      100%{transform:scale(1)}
+    }
+    @-webkit-keyframes scale {
+      0%{-webkit-transform:scale(1)}
+      50%{-webkit-transform:scale(1.2)}
+      100%{-webkit-transform:scale(1)}
     }
   }
 </style>

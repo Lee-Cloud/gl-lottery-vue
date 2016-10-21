@@ -11,7 +11,7 @@ import recommends from './views/recommends';
 import recommend_details from './views/recommend_details';
 
 import shuangseqiu from './views/shuangseqiu';
-
+import ssq_slip from './views/ssq-slip';
 import daletou from './views/daletou';
 
 Vue.use(VueRouter);
@@ -48,6 +48,9 @@ export default new VueRouter({
     },{
       path: '/shuangseqiu',
       component:shuangseqiu
+    },{
+      path: '/shuangseqiu/slip',
+      component:ssq_slip
     },{
       path: '/daletou',
       component:daletou

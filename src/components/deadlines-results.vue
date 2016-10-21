@@ -13,33 +13,50 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import VueResource from 'vue-resource';
+Vue.use(VueResource);
 export default {
   data () {
     return {
-      time_info:"第16552期 09-30 10:27（周五）截止投注，22:00开奖",
+      data:{},
+      time_info:"第2016122期 09-30 10:27（周五）截止投注，22:00开奖",
       isFold:true,
       isUnfold:false,
       past_results_state:false,
       past_results:[{
-                past_result_date:"第86期",
+                past_result_date:"第2016122期",
                 past_result_nums:["02","06","08","10",15,18,"08"]
             },{
-                past_result_date:"第87期",
+                past_result_date:"第2016122期",
                 past_result_nums:["02","06","08","10",15,18,"08"]
             },{
-                past_result_date:"第88期",
+                past_result_date:"第2016122期",
                 past_result_nums:["02","06","08","10",15,18,"08"]
             },{
-                past_result_date:"第89期",
+                past_result_date:"第2016122期",
                 past_result_nums:["02","06","08","10",15,18,"08"]
             },{
-                past_result_date:"第90期",
+                past_result_date:"第2016122期",
                 past_result_nums:["02","06","08","10",15,18,"08"]
             },{
-                past_result_date:"第91期",
+                past_result_date:"第2016122期",
                 past_result_nums:["02","06","08","10",15,18,"08"]
             }]
     }
+  },
+  created(){
+    this.$http.get('http://apis.baidu.com/apistore/lottery/lotteryquery?lotterycode=ssq&recordcnt=5',{
+      headers:{
+        apikey:'cf9eaf021a2acdaea3a658c3bc9088ff'
+      }
+    }).then(function(res){
+      console.log(JSON.parse(res.data)),
+      this.$set(this,'data',JSON.parse(res.data));
+      console.log(this.data)
+    },function(){
+
+    })
   },
   computed: {},
   mounted () {},
@@ -102,7 +119,7 @@ ul.past-results{
       position: relative;
       float: left;
       height: 0.46rem;
-      width: 1.28rem;
+      /*width: 1.28rem;*/
       padding-right: 0.28rem;
       color: #666;
       line-height: 0.46rem;
