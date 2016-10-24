@@ -1,9 +1,11 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router.js';
+import store from './vuex/store.js';
 const app = new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })
 function responsive(){

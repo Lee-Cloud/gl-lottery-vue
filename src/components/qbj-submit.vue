@@ -17,7 +17,7 @@
       </div>
     </li>
     <li class="submit">
-      <div><label for="zhui"><input type="checkbox" name="zhui" id="zhui">追加投注</label></div>
+      <div><label for="zhui"><input type="checkbox" name="zhui" id="zhui" v-model="zhui">追加投注</label></div>
       <div>
         <p class="count"><span>{{2*zhu*qi*bei}}</span> 元</p>
         <p class="info">{{zhu}}注 {{qi}}期 {{bei}}倍</p>
@@ -33,9 +33,10 @@ export default {
     return {
       qi : 1,
       bei : 1,
-      zhu : 1,
+      zhui:0
     }
   },
+  props:['zhu'],
   computed: {},
   mounted () {},
   methods: {

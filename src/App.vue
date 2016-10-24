@@ -11,9 +11,7 @@
 </template>
 
 <script>
-import store from './vuex/store.js';
 export default {
-  store,
   data(){
     return {
       title:"咕啦彩票",

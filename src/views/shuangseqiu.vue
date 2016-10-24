@@ -18,6 +18,7 @@
 import router from '../router.js';
 import deadlines from '../components/deadlines-results.vue';
 import btns from '../components/btns-default';
+import store from '../vuex/store.js';
 export default {
   data () {
     return {
@@ -104,7 +105,9 @@ export default {
       }
     },
     submit:function(){
-      console.log(this.ssq);
+      // console.log(this.ssq);
+      store.commit('ssq_add',this.ssq)
+      // console.log(store.state.ssq.ticket);
       router.push('shuangseqiu/slip');
     }
   },

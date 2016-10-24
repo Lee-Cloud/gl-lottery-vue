@@ -1,15 +1,23 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 Vue.use(Vuex);
-const state = {
-  title: '咕啦彩票'
-};
-const mutations = {
-  TITLE(state,value) {
-    state.title = value
-  }
+const ssq = {
+  state:{
+    ticket:[]
+  },
+  mutations: {
+    ssq_add(state,nums){
+      state.ticket.unshift(nums);
+    },
+    ssq_clear(state){
+      state.ticket.splice(0,state.ticket.length)
+    }
+  },
+  actions: {},
+  getters: {}
 };
 export default new Vuex.Store({
-  state,
-  mutations
+  modules:{
+    ssq
+  }
 })

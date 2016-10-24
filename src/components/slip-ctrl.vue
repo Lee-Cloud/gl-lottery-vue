@@ -1,8 +1,8 @@
 <template lang="html">
   <ul id="slip-ctrl">
-    <li class="btn add">自选号码</li>
-    <li class="btn random">机选一注</li>
-    <li class="btn clear">全部清空</li>
+    <li class="btn add" v-on:click="select">自选号码</li>
+    <li class="btn random" v-on:click="random">机选一注</li>
+    <li class="btn clear" v-on:click="clear">全部清空</li>
   </ul>
 </template>
 
@@ -13,7 +13,17 @@ export default {
   },
   computed: {},
   mounted () {},
-  methods: {},
+  methods: {
+    select:function(){
+      this.$emit('select')
+    },
+    random:function(){
+      this.$emit('random')
+    },
+    clear:function(){
+      this.$emit('clear')
+    }
+  },
   components: {}
 }
 </script>

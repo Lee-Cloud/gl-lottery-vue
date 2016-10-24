@@ -1,23 +1,17 @@
 <template lang="html">
   <div id="ssq-slip">
-    <slip_ctrl></slip_ctrl>
+    <slip_ctrl v-on:select="select" v-on:random="random" v-on:clear="clear"></slip_ctrl>
     <div class="ticket">
       <ticket_header></ticket_header>
       <ul class="ticket-content">
-        <li>
-          <i class="icon-delete"></i>
-          <span class="ssq">01</span>
-          <span class="ssq">01</span>
-          <span class="ssq">01</span>
-          <span class="ssq">01</span>
-          <span class="ssq">01</span>
-          <span class="ssq">01</span>
-          <span class="ssq">01</span>
+        <li v-for="(nums,index) in ticket">
+          <i class="icon-delete" v-on:click="delete_this(index)"></i>
+          <span class="ssq_num" v-for="num in nums">{{num}}</span>
         </li>
       </ul>
       <ticket_footer></ticket_footer>
     </div>
-    <submit></submit>
+    <submit v-bind:zhu="zhu"></submit>
   </div>
 </template>
 
@@ -26,16 +20,62 @@ import slip_ctrl from '../components/slip-ctrl.vue';
 import submit from '../components/qbj-submit.vue';
 import ticket_header from '../components/ticket-header';
 import ticket_footer from '../components/ticket-footer';
+import store from '../vuex/store.js';
+import router from '../router.js';
 export default {
   data () {
-    return {}
+    return {
+      ticket:store.state.ssq.ticket,
+      zhu:store.state.ssq.ticket.length
+    }
   },
   created(){
     this.$emit('viewIn',"投注单");
   },
   computed: {},
   mounted () {},
-  methods: {},
+  methods: {
+    select:function(){
+      router.go(-1);
+    },
+    random:function(){
+      var reds = [];
+      var blues = [];
+      for(var i=1;i<35;i++){
+        if(i<10){
+          reds[i]='0'+i;
+        }else{
+          reds[i]=+i;
+        }
+      }
+      for(var j=1;j<17;j++){
+        if(i<10){
+          blues[j]='0'+j;
+        }else{
+          blues[j]=+j;
+        }
+      }
+      reds.sort(function(){
+        return 0.5-Math.random()
+      })
+      blues.sort(function(){
+        return 0.5-Math.random()
+      })
+      var num =reds.slice(0,5).sort(function(a,b){return a-b}).concat(blues.slice(0,2).sort(function(a,b){return a-b}));
+      // console.log(num);
+      store.commit('ssq_add',num);
+      this.$set(this,'zhu',store.state.ssq.ticket.length)
+    },
+    clear:function(){
+      store.commit('ssq_clear');
+      this.$set(this,'zhu',store.state.ssq.ticket.length)
+      // console.log(this.ticket);
+    },
+    delete_this:function(index){
+      store.state.ssq.ticket.splice(index,1);
+      this.$set(this,'zhu',store.state.ssq.ticket.length)
+    }
+  },
   components: {
     slip_ctrl,
     ticket_header,
@@ -45,7 +85,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
   #ssq-slip {
     background-color: #eee;
   }
@@ -94,7 +134,7 @@ export default {
     background-image: url('../assets/ico_delete2.png');
     background-size: 100% 100%;
   }
-  ul.ticket-content > li > span.ssq {
+  ul.ticket-content > li > span.ssq_num {
     float: left;
     height: 0.99rem;
     line-height: 0.99rem;
@@ -102,8 +142,8 @@ export default {
     color: #dc3b40;
     margin-right: 0.3rem;
   }
-  ul.ticket-content > li > span.ssq:nth-child(7),
-  ul.ticket-content > li > span.ssq:nth-child(8) {
+  ul.ticket-content > li > span.ssq_num:nth-child(7),
+  ul.ticket-content > li > span.ssq_num:nth-child(8) {
     color: #0C89E1
   }
 </style>
