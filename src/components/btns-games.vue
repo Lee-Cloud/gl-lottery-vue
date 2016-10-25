@@ -1,7 +1,7 @@
 <template lang="html">
-  <div id="btns-default">
+  <div id="btns-games">
     <span class="clear-btn" v-on:click="clear">清空</span>
-    <p class="count"><span>{{zhu}}</span> 注 <span>{{zhu*2}}</span> 元</p>
+    <p class="count">至少选择<span>9</span>场比赛</p>
     <input class="sure-btn" type="button" value="确定"  v-on:click="submit" v-bind:disabled="!canSubmit">
   </div>
 </template>
@@ -13,7 +13,7 @@ export default {
 
     }
   },
-  props:['canSubmit','zhu'],
+  props:['canSubmit'],
   computed: {},
   mounted () {},
   methods: {
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-  #btns-default {
+  #btns-games {
     position: fixed;
     bottom: 0;
     left: 0;

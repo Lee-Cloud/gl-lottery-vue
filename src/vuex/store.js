@@ -16,8 +16,24 @@ const ssq = {
   actions: {},
   getters: {}
 };
+
+const dlt = {
+  state:{
+    ticket:[]
+  },
+  mutations:{
+    dlt_add(state,nums){
+      state.ticket.unshift(nums);
+    },
+    dlt_clear(state){
+      state.ticket.splice(0,state.ticket.length)
+    }
+  }
+}
+
 export default new Vuex.Store({
   modules:{
-    ssq
+    ssq,
+    dlt
   }
 })

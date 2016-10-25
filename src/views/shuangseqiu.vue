@@ -2,7 +2,7 @@
   <div id="shuangseqiu">
     <deadlines></deadlines>
     <div class="ball-zone">
-      <p class="prompt">至少选择5个红球，2个蓝球<span class="random-btn" v-on:click="random">机选</span></p>
+      <p class="prompt">至少选择6个红球，1个蓝球<span class="random-btn" v-on:click="random">机选</span></p>
       <ul class="balls red-balls">
         <li v-for="(item,index) in reds" v-on:click="red_select(item,index)" v-bind:class="{selected:item.isSelected}">{{item.num}}</li>
       </ul>
@@ -33,11 +33,11 @@ export default {
   },
   created (){
     this.$emit('viewIn',"双色球");
-    this.init();//34个红球，16个蓝球初始化
+    this.init();//33个红球，16个蓝球初始化
   },
   computed: {
     check:function(){
-      if((this.reds_selected.length==5)&&(this.blues_selected.length==2)){
+      if((this.reds_selected.length==6)&&(this.blues_selected.length==1)){
         this.reds_selected.sort(function(a,b){return a-b});
         this.blues_selected.sort(function(a,b){return a-b});
         this.$set(this,'ssq',this.reds_selected.concat(this.blues_selected));
@@ -54,7 +54,7 @@ export default {
     init:function(){
       var reds = [];
       var blues = [];
-      for(var i=1;i<35;i++){
+      for(var i=1;i<34;i++){
         (i<10)&&(i='0'+i);
         reds.push({num:i,isSelected:false});
       }
@@ -72,7 +72,7 @@ export default {
     red_select:function(item,index){
       item.isSelected = !item.isSelected;
       if(item.isSelected){
-        (this.reds_selected.length<5)?this.reds_selected.push(item.num):(item.isSelected = !item.isSelected);
+        (this.reds_selected.length<6)?this.reds_selected.push(item.num):(item.isSelected = !item.isSelected);
       }else{
         for(var i=0;i<this.reds_selected.length;i++){
           (this.reds_selected[i]==item.num)&&(this.reds_selected.splice(i,1));
@@ -84,7 +84,7 @@ export default {
     blue_select:function(item){
       item.isSelected = !item.isSelected;
       if(item.isSelected){
-        (this.blues_selected.length<2)?this.blues_selected.push(item.num):(item.isSelected = !item.isSelected);
+        (this.blues_selected.length<1)?this.blues_selected.push(item.num):(item.isSelected = !item.isSelected);
       }else{
         for(var i=0;i<this.blues_selected.length;i++){
           (this.blues_selected[i]==item.num)&&(this.blues_selected.splice(i,1));
@@ -95,11 +95,11 @@ export default {
     },
     random:function(){
       this.init();
-      while(this.reds_selected.length<5){
-        var i = parseInt(Math.random()*34);
+      while(this.reds_selected.length<6){
+        var i = parseInt(Math.random()*33);
         this.red_select(this.reds[i]);
       }
-      while(this.blues_selected.length<2){
+      while(this.blues_selected.length<1){
         var j = parseInt(Math.random()*16);
         this.blue_select(this.blues[j]);
       }

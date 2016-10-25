@@ -51,7 +51,7 @@
         </router-link>
       </li>
       <li class="lottery">
-        <router-link to="" class="lottery-link">
+        <router-link to="/jclq" class="lottery-link">
           <img src="../assets/ico_jingcailanqiu.png" alt="竞彩篮球" />
           <div class="lottery-info">
             <p class="lottery-name">竞彩篮球</p>
@@ -60,7 +60,7 @@
         </router-link>
       </li>
       <li class="lottery">
-        <router-link to="" class="lottery-link">
+        <router-link to="/renxuanjiu" class="lottery-link">
           <img src="../assets/ico_renxuanjiu.png" alt="任选九" />
           <div class="lottery-info">
             <p class="lottery-name">任选九</p>
@@ -69,7 +69,7 @@
         </router-link>
       </li>
       <li class="lottery">
-        <router-link to="" class="lottery-link">
+        <router-link to="/pieliesan" class="lottery-link">
           <img src="../assets/ico_pailiesan.png" alt="排列三" />
           <div class="lottery-info">
             <p class="lottery-name">排列三</p>
@@ -78,7 +78,7 @@
         </router-link>
       </li>
       <li class="lottery">
-        <router-link to="" class="lottery-link">
+        <router-link to="/fc3d" class="lottery-link">
           <img src="../assets/ico_3D.png" alt="福彩3D" />
           <div class="lottery-info">
             <p class="lottery-name">福彩3D</p>
@@ -87,7 +87,7 @@
         </router-link>
       </li>
       <li class="lottery">
-        <router-link to="" class="lottery-link">
+        <router-link to="/shenfucai" class="lottery-link">
           <img src="../assets/ico_shengfucai.png" alt="胜负彩" />
           <div class="lottery-info">
             <p class="lottery-name">胜负彩</p>
@@ -96,7 +96,7 @@
         </router-link>
       </li>
       <li class="lottery">
-        <router-link to="" class="lottery-link">
+        <router-link to="/jzdg" class="lottery-link">
           <img src="../assets/ico_zuqiudanguan.png" alt="竞足单关" />
           <div class="lottery-info">
             <p class="lottery-name">竞足单关</p>
@@ -105,7 +105,7 @@
         </router-link>
       </li>
       <li class="lottery">
-        <router-link to="" class="lottery-link">
+        <router-link to="/lotteries" class="lottery-link">
           <img src="../assets/ico_more.png" alt="更多彩种" />
           <div class="lottery-info">
             <p class="lottery-name">更多彩种</p>

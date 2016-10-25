@@ -1,5 +1,5 @@
 <template lang="html">
-  <div id="ssq-slip">
+  <div id="dlt-slip">
     <slip_ctrl v-on:select="select" v-on:random="random" v-on:clear="clear"></slip_ctrl>
     <div class="ticket">
       <ticket_header></ticket_header>
@@ -25,12 +25,12 @@ import router from '../router.js';
 export default {
   data () {
     return {
-      ticket:store.state.ssq.ticket,
-      zhu:store.state.ssq.ticket.length
+      ticket:store.state.dlt.ticket,
+      zhu:store.state.dlt.ticket.length
     }
   },
   created(){
-    this.$emit('viewIn',"双色球投注单");
+    this.$emit('viewIn',"大乐透投注单");
   },
   computed: {},
   mounted () {},
@@ -41,14 +41,14 @@ export default {
     random:function(){
       var reds = [];
       var blues = [];
-      for(var i=1;i<34;i++){
+      for(var i=1;i<36;i++){
         if(i<10){
           reds[i]='0'+i;
         }else{
           reds[i]=i;
         }
       }
-      for(var j=1;j<17;j++){
+      for(var j=1;j<13;j++){
         if(j<10){
           blues[j]='0'+j;
         }else{
@@ -61,19 +61,19 @@ export default {
       blues.sort(function(){
         return 0.5-Math.random()
       })
-      var num =reds.slice(0,6).sort(function(a,b){return a-b}).concat(blues.slice(0,1).sort(function(a,b){return a-b}));
+      var num =reds.slice(0,5).sort(function(a,b){return a-b}).concat(blues.slice(0,2).sort(function(a,b){return a-b}));
       // console.log(num);
-      store.commit('ssq_add',num);
-      this.$set(this,'zhu',store.state.ssq.ticket.length)
+      store.commit('dlt_add',num);
+      this.$set(this,'zhu',store.state.dlt.ticket.length)
     },
     clear:function(){
-      store.commit('ssq_clear');
-      this.$set(this,'zhu',store.state.ssq.ticket.length)
+      store.commit('dlt_clear');
+      this.$set(this,'zhu',store.state.dlt.ticket.length)
       // console.log(this.ticket);
     },
     delete_this:function(index){
-      store.state.ssq.ticket.splice(index,1);
-      this.$set(this,'zhu',store.state.ssq.ticket.length)
+      store.state.dlt.ticket.splice(index,1);
+      this.$set(this,'zhu',store.state.dlt.ticket.length)
     }
   },
   components: {
@@ -86,7 +86,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-  #ssq-slip {
+  #dlt-slip {
     background-color: #eee;
   }
   div.ticket {
@@ -143,6 +143,7 @@ export default {
     color: #dc3b40;
     margin-right: 0.3rem;
   }
+  ul.ticket-content > li > span.ssq_num:nth-child(7),
   ul.ticket-content > li > span.ssq_num:nth-child(8) {
     color: #0C89E1
   }

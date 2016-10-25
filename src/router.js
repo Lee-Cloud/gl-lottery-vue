@@ -13,6 +13,12 @@ import recommend_details from './views/recommend_details';
 import shuangseqiu from './views/shuangseqiu';
 import ssq_slip from './views/ssq-slip';
 import daletou from './views/daletou';
+import dlt_slip from './views/dlt-slip';
+import jclq from './views/jclq';
+import renxuanjiu from './views/renxuanjiu';
+import rxj_slip from './views/rxj-slip';
+
+import fc3d from './views/fc3d';
 
 Vue.use(VueRouter);
 export default new VueRouter({
@@ -54,6 +60,21 @@ export default new VueRouter({
     },{
       path: '/daletou',
       component:daletou
+    },{
+      path:'/daletou/slip',
+      component:dlt_slip
+    },{
+      path: '/jclq',
+      component:jclq
+    },{
+      path: '/renxuanjiu',
+      component:renxuanjiu
+    },{
+      path:'/renxuanjiu/slip',
+      component:rxj_slip
+    },{
+      path:'/fc3d',
+      component:fc3d
     }
 	]
 })
