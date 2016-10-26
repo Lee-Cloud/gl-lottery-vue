@@ -69,7 +69,7 @@
         </router-link>
       </li>
       <li class="lottery">
-        <router-link to="/pieliesan" class="lottery-link">
+        <router-link to="/pailiesan" class="lottery-link">
           <img src="../assets/ico_pailiesan.png" alt="排列三" />
           <div class="lottery-info">
             <p class="lottery-name">排列三</p>
@@ -87,7 +87,7 @@
         </router-link>
       </li>
       <li class="lottery">
-        <router-link to="/shenfucai" class="lottery-link">
+        <router-link to="/shengfucai" class="lottery-link">
           <img src="../assets/ico_shengfucai.png" alt="胜负彩" />
           <div class="lottery-info">
             <p class="lottery-name">胜负彩</p>

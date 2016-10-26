@@ -1,5 +1,5 @@
 <template lang="html">
-  <div id="fc3d">
+  <div id="pls">
     <deadline></deadline>
     <p class="prompt">每位至少选择1个号码<span class="random-btn" v-on:click="random">机选</span></p>
     <div class="wei bai">
@@ -38,7 +38,7 @@ export default {
     }
   },
   created(){
-    this.$emit('viewIn',"福彩3D");
+    this.$emit('viewIn',"排列三");
     this.init();
   },
   computed: {
@@ -121,7 +121,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  #fc3d {
+  #pls {
     background-color: #eee;
     padding-bottom: 1rem;
   }

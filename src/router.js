@@ -17,8 +17,11 @@ import dlt_slip from './views/dlt-slip';
 import jclq from './views/jclq';
 import renxuanjiu from './views/renxuanjiu';
 import rxj_slip from './views/rxj-slip';
-
+import pailiesan from './views/pailiesan'
 import fc3d from './views/fc3d';
+import shengfucai from './views/shengfucai';
+
+import lotteries from './views/lotteries';
 
 Vue.use(VueRouter);
 export default new VueRouter({
@@ -70,11 +73,20 @@ export default new VueRouter({
       path: '/renxuanjiu',
       component:renxuanjiu
     },{
+      path:'/pailiesan',
+      component:pailiesan
+    },{
       path:'/renxuanjiu/slip',
       component:rxj_slip
     },{
       path:'/fc3d',
       component:fc3d
+    },{
+      path:'/shengfucai',
+      component:shengfucai
+    },{
+      path:'/lotteries',
+      component:lotteries
     }
 	]
 })

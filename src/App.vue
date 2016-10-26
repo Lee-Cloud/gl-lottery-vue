@@ -32,6 +32,8 @@ export default {
     const fromDepth = from.path.split('/').length;
     if(to.path=="/"){
       this.transitionName = 'slide-right';
+    }else if((to.path=="/lotteries")&&(from.path!="/")){
+      this.transitionName = 'slide-right';
     }else{
       this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
     }

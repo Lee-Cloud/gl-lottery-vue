@@ -26,24 +26,28 @@ Vue.use(VueResource);
     },
     created (){
       this.$emit('viewIn',"购彩资讯");
-      this.$http.get('http://apis.baidu.com/txapi/tiyu/tiyu',{
-        params:{
-          num:10,
-        },
-        headers:{
-          apikey:'cf9eaf021a2acdaea3a658c3bc9088ff'
-        }
-      })
-      .then(
-        function(response){
-          console.log(response.body.newslist);
-          this.$set(this,'newslist', response.body.newslist);
-          // console.log(this.newslist);
-        },
-        function(response){
-          console.log(response)
-        }
-      )
+      this.update();
+    },
+    methods:{
+      update:function(){
+        this.$http.get('http://apis.baidu.com/txapi/tiyu/tiyu',{
+          params:{
+            num:10,
+          },
+          headers:{
+            apikey:'cf9eaf021a2acdaea3a658c3bc9088ff'
+          }
+        })
+        .then(
+          function(response){
+            console.log(response.body.newslist);
+            this.$set(this,'newslist', response.body.newslist);
+          },
+          function(response){
+            console.log(response)
+          }
+        )
+      }
     }
   }
 </script>
