@@ -135,8 +135,9 @@
 <style scoped>
   div.banner{
     width: 7.2rem;
-    height: 3.3rem;
-    background-color: antiquewhite;
+    height: 3.6rem;
+    background-image: url('../assets/1122.jpg');
+    background-size: 100% 100%;
   }
   nav{
     width: 100%;
