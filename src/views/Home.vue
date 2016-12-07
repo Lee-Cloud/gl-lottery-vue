@@ -96,7 +96,7 @@
         </router-link>
       </li>
       <li class="lottery">
-        <router-link to="/jzdg" class="lottery-link">
+        <router-link to="" class="lottery-link">
           <img src="../assets/ico_zuqiudanguan.png" alt="竞足单关" />
           <div class="lottery-info">
             <p class="lottery-name">竞足单关</p>

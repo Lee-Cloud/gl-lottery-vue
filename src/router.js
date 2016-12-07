@@ -27,7 +27,10 @@ Vue.use(VueRouter);
 export default new VueRouter({
   mode: 'history',
 	routes:[
-		{
+    {
+      path:"/lottery",
+      component:Home
+    },{
 			path:"",
 			component:Home
 		},{

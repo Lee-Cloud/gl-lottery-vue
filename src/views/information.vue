@@ -17,6 +17,7 @@
 <script type="text/javascript">
 import Vue from 'vue';
 import VueResource from 'vue-resource';
+import Loadmore from 'vue-loadmore';
 Vue.use(VueResource);
   export default {
     data(){
@@ -31,7 +32,7 @@ Vue.use(VueResource);
     methods:{
       update:function(){
         this.$http.get('http://apis.baidu.com/txapi/tiyu/tiyu',{
-          params:{
+          param:{
             num:10,
           },
           headers:{
@@ -78,7 +79,6 @@ Vue.use(VueResource);
     top: 0.23rem;
     left: 1.71rem;
     width: 5.04rem;
-
   }
   li.info-preview-titile{
     margin-bottom: 0.21rem;

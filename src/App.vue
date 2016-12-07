@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <i class="icon-back" v-on:click="backwards"></i>
+      <i class="icon-back" v-on:click="backwards" v-if="title!='咕啦彩票'"></i>
       {{title}}
     </header>
     <transition :name="transitionName">
@@ -20,7 +20,8 @@ export default {
   },
   methods:{
     backwards: function(){
-      history.go(-1);
+      // history.go(-1);
+      history.back();
     },
     changeTitle: function(value){
       this.title = value;
@@ -97,6 +98,7 @@ export default {
     width: 100%;
     height: 0.9rem;
     background-color: #dc3d40;
+    /*background-color: #2186DB;*/
     font-size: 0.36rem;
     color: white;
     text-align: center;
@@ -114,9 +116,11 @@ export default {
   }
   .slide-left-enter-active {
     animation: slide-left-in 0.3s ease-in-out;
+    -webkit-animation: slide-left-in 0.3s ease-in-out;
   }
   .slide-left-leave-active{
     animation: slide-left-out 0.3s ease-in-out;
+    -webkit-animation: slide-left-out 0.3s ease-in-out;
   }
   @keyframes slide-left-in {
     0% {transform: translate3d(100%,0,0)}
@@ -126,11 +130,21 @@ export default {
     0% {transform: translate3d(0,0,0)}
     100% {transform: translate3d(-100%,0,0)}
   }
+  @-webkit-keyframes slide-left-in {
+    0% {-webkit-transform: translate3d(100%,0,0)}
+    100% {-webkit-transform: translate3d(0,0,0)}
+  }
+  @-webkit-keyframes slide-left-out {
+    0% {-webkit-transform: translate3d(0,0,0)}
+    100% {-webkit-transform: translate3d(-100%,0,0)}
+  }
   .slide-right-enter-active {
     animation:slide-right-in 0.3s ease-in-out;
+    -webkit-animation:slide-right-in 0.3s ease-in-out;
   }
   .slide-right-leave-active {
     animation:slide-right-out 0.3s ease-in-out;
+    -webkit-animation:slide-right-out 0.3s ease-in-out;
   }
   @keyframes slide-right-in {
     0% {transform: translate3d(-100%,0,0)}
@@ -139,5 +153,13 @@ export default {
   @keyframes slide-right-out {
     0% {transform: translate3d(0,0,0)}
     100% {transform: translate3d(100%,0,0)}
+  }
+  @-webkit-keyframes slide-right-in {
+    0% {-webkit-transform: translate3d(-100%,0,0)}
+    100% {-webkit-transform: translate3d(0,0,0)}
+  }
+  @-webkit-keyframes slide-right-out {
+    0% {-webkit-transform: translate3d(0,0,0)}
+    100% {-webkit-transform: translate3d(100%,0,0)}
   }
 </style>
