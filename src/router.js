@@ -26,12 +26,10 @@ import lotteries from './views/lotteries';
 Vue.use(VueRouter);
 export default new VueRouter({
   mode: 'history',
+  base: '/lottery-vue/',
 	routes:[
     {
-      path:"/lottery",
-      component:Home
-    },{
-			path:"",
+			path:"/",
 			component:Home
 		},{
       path:"/results",

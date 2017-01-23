@@ -33,7 +33,7 @@ Vue.use(VueResource);
       update:function(){
         this.$http.get('http://apis.baidu.com/txapi/tiyu/tiyu',{
           param:{
-            num:10,
+            num:10
           },
           headers:{
             apikey:'cf9eaf021a2acdaea3a658c3bc9088ff'
